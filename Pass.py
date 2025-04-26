@@ -35,11 +35,11 @@ for i in range(1000):
       
         print(f"Trying PIN: {guess}")
         print(f"Request sent:\n{req}")
-        print(f"Server response:\n{output}")
-        print(f"Server response for {guess}: {output}")
+        print(f"Server response (truncated):\n{output[:200]}")
 
+        
         if "Success" in output or "Welcome" in output or "Correct" in output or "Flag" in output:
-            print(f"[🎉] PIN FOUND: {guess}")
+            print(f" PIN FOUND: {guess}")
             break
         else:
             print(f"Try {guess} -> no luck")
